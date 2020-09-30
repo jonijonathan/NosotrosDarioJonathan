@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto</title>
+    <script>
+        function guardarDatos(){
+            let nombre = document.getElementById("nombre").value;
+            let apellido = document.getElementById("apellido").value;
+            let email = document.getElementById("email").value;
+            let mensaje = document.getElementById("mensaje").value;
+
+            localStorage.setItem("nombre", nombre);
+            localStorage.setItem("apellido", apellido);
+            localStorage.setItem("email", email);
+            localStorage.setItem("mensaje", mensaje);
+
+            location.replace("mensaje.html");
+
+        }
+
+        function cargarLocal(){
+
+            let nombre = localStorage.getItem("nombre");
+            let apellido = localStorage.getItem("apellido");
+            let email = localStorage.getItem("email");
+            let mensaje = localStorage.getItem("mensaje");
+
+            document.getElementById("nombre").innerText = nombre;  
+            
+        }
+        function volver() {
+            location.replace("index.html");
+
+        }
+    </script>
+</head>
+<body>
+    <h1>Contacto</h1>
+    <form action ="mensaje.html" method="POST">
+        <fieldset>
+            <label>Nombre</label>
+            <input type ="text" id = "nombre" placeholder="Nombre"/>
+            <br/>
+            <label>Apellido</label>
+            <input type ="text" id = "apellido" placeholder="Apellido"/>
+            <br/>
+            <label>Email</label>
+            <input type ="mail" id = "email" placeholder="email"/>
+            <br/>
+            <label>Mensaje</label>
+            <input type ="text" id = "mensaje" placeholder="mensaje"/>
+        </fieldset>
+        <input type ="button" id = "pulsar" onclick="guardarDatos()" value="Enviar"/>      
+    </form>
+    <input type ="button" id = "volver" onclick="volver()" value="Volver"/>
+</body>
+</html>
